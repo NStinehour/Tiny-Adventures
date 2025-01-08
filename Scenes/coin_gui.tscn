@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://crx654sko631o"]
+
+[ext_resource type="Script" path="res://Scripts/coin_gui.gd" id="1_y4nrs"]
+[ext_resource type="Texture2D" uid="uid://c13llnm4ktsdb" path="res://Assets/brackeys_platformer_assets/sprites/coin.png" id="2_cij6h"]
+[ext_resource type="FontFile" uid="uid://1tiaxl57c0co" path="res://Assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="3_xcckh"]
+
+[node name="coin_gui" type="CanvasLayer"]
+script = ExtResource("1_y4nrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(22, 22)
+scale = Vector2(2.30117, 2.30117)
+texture = ExtResource("2_cij6h")
+region_enabled = true
+region_rect = Rect2(3, 3, 10, 10)
+
+[node name="Coins" type="Label" parent="."]
+offset_left = 44.0
+offset_top = 15.0
+offset_right = 84.0
+offset_bottom = 38.0
+theme_override_fonts/font = ExtResource("3_xcckh")
+theme_override_font_sizes/font_size = 16

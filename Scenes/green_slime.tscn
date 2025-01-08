@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://dl4xa3jucya21"]
+
+[ext_resource type="Texture2D" uid="uid://8k8xirpucd0x" path="res://Assets/brackeys_platformer_assets/sprites/slime_green.png" id="1_c5kyu"]
+[ext_resource type="Script" path="res://Scripts/green_slime.gd" id="1_icjuq"]
+[ext_resource type="PackedScene" uid="uid://bijsxuox6bmyb" path="res://Scenes/killzone.tscn" id="2_jls3l"]
+[ext_resource type="PackedScene" uid="uid://cwu5ketlt4b31" path="res://Scenes/death_sound.tscn" id="4_dswvc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj00j"]
+atlas = ExtResource("1_c5kyu")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whwwu"]
+atlas = ExtResource("1_c5kyu")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wql15"]
+atlas = ExtResource("1_c5kyu")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwh22"]
+atlas = ExtResource("1_c5kyu")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pjgea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj00j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whwwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wql15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwh22")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fvv0p"]
+size = Vector2(8, 11)
+
+[node name="Green Slime" type="Node2D"]
+script = ExtResource("1_icjuq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pjgea")
+frame = 1
+frame_progress = 0.402405
+
+[node name="Killzone" parent="." instance=ExtResource("2_jls3l")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_fvv0p")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(7, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 5)
+target_position = Vector2(-7, 0)
+
+[node name="DeathSound" parent="." instance=ExtResource("4_dswvc")]
+unique_name_in_owner = true

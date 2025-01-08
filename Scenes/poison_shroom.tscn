@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqria85r8n4rs"]
+
+[ext_resource type="Texture2D" uid="uid://dtqi5xgpihrrb" path="res://Assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_ltpby"]
+[ext_resource type="PackedScene" uid="uid://bijsxuox6bmyb" path="res://Scenes/killzone.tscn" id="2_w12qs"]
+[ext_resource type="PackedScene" uid="uid://cwu5ketlt4b31" path="res://Scenes/death_sound.tscn" id="3_nw30o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tekkr"]
+size = Vector2(10, 13)
+
+[node name="PoisonShroom" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ltpby")
+region_enabled = true
+region_rect = Rect2(112, 112, 16, 16)
+
+[node name="Killzone" parent="." instance=ExtResource("2_w12qs")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_tekkr")
+
+[node name="DeathSound" parent="." instance=ExtResource("3_nw30o")]
+unique_name_in_owner = true

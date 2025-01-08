@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwu5ketlt4b31"]
+
+[ext_resource type="AudioStream" uid="uid://dga7kshwtsfxi" path="res://Assets/brackeys_platformer_assets/sounds/hurt.wav" id="1_33lrk"]
+
+[node name="DeathSound" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_33lrk")
+bus = &"SFX"
